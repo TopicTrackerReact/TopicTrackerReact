@@ -3,10 +3,15 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 
 interface Task {
-  id: number,
   taskName: string,
   notes: string,
   isCompleted: boolean,
+}
+
+const Task = {
+  taskName: '',
+  notes: '',
+  isCompleted: false,
 }
 
 interface InitialState {
@@ -25,8 +30,8 @@ export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
-    createTask(state, action: PayloadAction<Task>) {
-      state.taskCache[action.payload.taskName] = action.payload;
+    createTask(state, action: PayloadAction<string>) {
+      state.taskCache[action.payload] = { ...Task, taskName: action.payload };
       state.totalTasks++;
     },
     updateTask(state, action: PayloadAction<Task>) {

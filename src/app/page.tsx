@@ -1,10 +1,15 @@
 import { Input } from './input'
+import { AllTasks } from './allTasks'
 
 export default function Home() {
   return (
     <main>
-      <h1>tasks</h1>
-      <Input />
+      <div>
+        <Input />
+      </div>
+      <div>
+        <AllTasks />
+      </div>
     </main>
   )
 }

@@ -51,15 +51,14 @@ export const AllTasks = () => {
     dispatch(updateCompleted(task.id))
   }
 
-
   // const notesRef = useRef(task.notes)
   return (
     <div className="flex flex-wrap gap-3">
       {arrOfTasks}
-      <dialog id='my_modal' className="modal">
+      <dialog id='my_modal' className="modal absolute">
         <div className="modal-box flex flex-col">
           <form method="dialog" className="flex flex-col gap-3">
-            <input className="input focus:input-bordered  max-w-xs bg-inherit focus:outline-none" value={task.taskName !== '' ? task.taskName : ''} onChange={(e) => setTask({ ...task, taskName: e.target.value })} />
+            <input className="input focus:input-bordered  max-w-xs bg-inherit focus:outline-none" value={task.taskName !== '' ? task.taskName : ''} onChange={(e) => setTask({ ...task, taskName: e.target.value.toUpperCase() })} />
             <textarea className="textarea textarea-bordered focus:outline-none" value={task.notes !== '' ? task.notes : ''} onChange={(e) => setTask({ ...task, notes: e.target.value })} />
             <div className="flex justify-around">
               <button className="btn btn-sm btn-ghost" onClick={() => setTask({ ...task, ...taskCache[task.id] })}>
@@ -70,7 +69,7 @@ export const AllTasks = () => {
               </button>
             </div>
             <button className="btn btn-sm btn-ghost" onClick={() => dispatch(deleteTask(task.id))}>
-              Delete
+              🗑️
             </button>
           </form>
           <button className="btn btn-sm btn-ghost" onClick={setCompleted}>

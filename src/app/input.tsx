@@ -3,18 +3,24 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { createTask } from '@/redux/slices/taskSlice';
+import store from '@/redux/store/store';
 
 export const Input = () => {
 
   const [task, setTask] = useState('');
+
+  const { taskNames } = store.getState().task;
 
   const dispatch = useDispatch();
 
   const submitTask = () => {
     console.log('task: ', task);
     if (task !== '') {
-      dispatch(createTask(task));
-      setTask('');
+      if (taskNames[task]) alert('No Duplicate Entries Allowed');
+      else {
+        dispatch(createTask(task));
+        setTask('');
+      }
     }
   }
 

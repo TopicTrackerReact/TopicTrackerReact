@@ -24,12 +24,14 @@ interface InitialState {
     [id: string]: number
   },
   totalTasks: number,
+  maxId: number
 }
 
 const initialState: InitialState = {
   taskCache: {},
   taskNames: {},
   totalTasks: 0,
+  maxId: 0,
 }
 
 export const taskSlice = createSlice({
@@ -38,14 +40,12 @@ export const taskSlice = createSlice({
   reducers: {
     // For when user creates new task in input (input === string)
     createTask(state, action: PayloadAction<string>) {
-      if (!state.taskNames[action.payload]) {
-        let id = Math.round(Math.random() * 100);
-        while (state.taskCache[id]) id = Math.round(Math.random() * 100);
 
-        state.taskCache[id] = { ...Task, taskName: action.payload, id };
-        state.taskNames[action.payload] = id;
-        state.totalTasks++;
-      }
+      state.taskCache[state.maxId] = { ...Task, taskName: action.payload.toUpperCase(), id: state.maxId };
+      state.taskNames[action.payload] = state.maxId;
+      state.totalTasks++;
+      state.maxId++;
+
     },
     // When user opens modal
     updateTask(state, action: PayloadAction<Task>) {

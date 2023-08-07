@@ -2,9 +2,9 @@
 
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { createTask } from '@/redux/slices/taskSlice';
-import store from '@/redux/store/store';
-import { AppDispatch } from '@/redux/store/store'
+import { createTask } from '@/_redux/slices/taskSlice';
+import store from '@/_redux/store/store';
+import { AppDispatch } from '@/_redux/store/store'
 
 export const Input = () => {
 

@@ -2,9 +2,9 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState } from "@/redux/store/store";
-import { updateTask, updateCompleted, deleteTask } from "@/redux/slices/taskSlice";
-import { AppDispatch } from '@/redux/store/store'
+import type { RootState } from "@/_redux/store/store";
+import { updateTask, updateCompleted, deleteTask } from "@/_redux/slices/taskSlice";
+import { AppDispatch } from '@/_redux/store/store'
 
 export const AllTasks = () => {
   const dispatch = useDispatch<AppDispatch>();

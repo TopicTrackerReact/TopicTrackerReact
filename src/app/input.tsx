@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { createTask } from '@/redux/slices/taskSlice';
 import store from '@/redux/store/store';
+import { AppDispatch } from '@/redux/store/store'
 
 export const Input = () => {
 
@@ -11,7 +12,7 @@ export const Input = () => {
 
   const { taskNames } = store.getState().task;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const submitTask = () => {
     console.log('task: ', task);

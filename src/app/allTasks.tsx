@@ -4,9 +4,10 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/redux/store/store";
 import { updateTask, updateCompleted, deleteTask } from "@/redux/slices/taskSlice";
+import { AppDispatch } from '@/redux/store/store'
 
 export const AllTasks = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [task, setTask] = useState({
     id: NaN,

@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html data-theme="dark" lang="en">
-      <body>
+      <body className='bg-white h-full w-full'>
         <Providers>
           {children}
         </Providers>

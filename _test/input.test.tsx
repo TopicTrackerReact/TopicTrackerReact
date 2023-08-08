@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import "@testing-library/jest-dom";
-import { Input } from './src/app/home/input'
-import { Providers } from '@/__redux/provider'
+import { Input } from '@/app/home/input';
+import { Providers } from '@/_redux/provider'
 
 describe('Input for new topics', () => {
     it ('Should render button properly', () => {

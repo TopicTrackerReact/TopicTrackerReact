@@ -1,11 +1,9 @@
-import { Input } from './input'
-import { AllTasks } from './allTasks'
+import Link from "next/link"
 
-export default function Home() {
+export default function Landing() {
   return (
-    <main className="flex flex-col bg-red-900 h-full">
-      <Input />
-      <AllTasks />
+    <main>
+      <Link href={'/home'}>Home</Link>
     </main>
   )
 }

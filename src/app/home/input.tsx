@@ -26,7 +26,7 @@ export const Input = () => {
   }
 
   return (
-    <div id='inputComp'>
+    <div id='inputComp' className='flex'>
       <input type="text" value={task} onChange={
         (e) => setTask(e.target.value)
       } className="input input-bordered w-full max-w-xs" />

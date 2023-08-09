@@ -26,10 +26,10 @@ export const Input = () => {
   }
 
   return (
-    <div id='inputComp' className='flex'>
+    <div id='inputComp'>
       <input type="text" value={task} onChange={
         (e) => setTask(e.target.value)
-      } className="input input-bordered w-full max-w-xs" />
+      } className="input input-bordered m-3 max-w-xs" />
       <button className='btn' onClick={submitTask}>
         Create
       </button>

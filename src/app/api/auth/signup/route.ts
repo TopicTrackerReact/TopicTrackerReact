@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
       const existResponse = await dbClient?.query(emailCheck, [email]);
 			
       if (existResponse?.rows.length === 1) {
-				return NextResponse.json({response: 'email already exists'}, {status: 400});
+				return NextResponse.json({response: 'Email Already Exists'}, {status: 400});
 			}
 			
       // BCRYPT PASSWORD

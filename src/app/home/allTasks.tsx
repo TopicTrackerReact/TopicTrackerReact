@@ -28,7 +28,7 @@ export const AllTasks = () => {
         <button id={currentId}
           className={
             `btn ${Number(currentId) === task.id ?
-              (task.isCompleted ? 'bg-green-700 hover:bg-green-900' : null) : null}`
+              (task.isCompleted ? 'bg-green-500 hover:bg-green-600' : null) : null}`
           }
           onClick={() => openModal(currentId)}>
           {taskCache[Number(currentId)].taskName}
@@ -59,7 +59,7 @@ export const AllTasks = () => {
       <dialog id='my_modal' className="modal absolute">
         <div className="modal-box flex flex-col">
           <form method="dialog" className="flex flex-col gap-3">
-            <input className="input focus:input-bordered  max-w-xs bg-inherit focus:outline-none" value={task.taskName !== '' ? task.taskName : ''} onChange={(e) => setTask({ ...task, taskName: e.target.value.toUpperCase() })} />
+            <input className="input focus:input-bordered bg-inherit m-auto text-center font-bold focus:outline-none" value={task.taskName !== '' ? task.taskName : ''} onChange={(e) => setTask({ ...task, taskName: e.target.value.toUpperCase() })} />
             <textarea className="textarea textarea-bordered focus:outline-none" value={task.notes !== '' ? task.notes : ''} onChange={(e) => setTask({ ...task, notes: e.target.value })} />
             <div className="flex justify-around">
               <button className="btn btn-sm btn-ghost" onClick={() => setTask({ ...task, ...taskCache[task.id] })}>

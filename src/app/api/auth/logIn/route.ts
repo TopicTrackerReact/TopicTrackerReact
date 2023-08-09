@@ -3,15 +3,14 @@ import connectToDatabase from "../../sql/sql";
 import bcrypt from 'bcrypt';
 
 
-export async function POST (req: NextRequest) {
+export async function POST(req: NextRequest) {
 
-  const { dbClient: client, dbRelease: release} = await connectToDatabase();
+  const { dbClient: client, dbRelease: release } = await connectToDatabase();
 
   try {
-
     // GET USER DATA
     const body = await req.json();
-    const { email, password }: {email: string, password: string} = body;
+    const { email, password }: { email: string, password: string } = body;
 
     // QUERY FOR USER DATA
     const logIn = `
@@ -23,20 +22,32 @@ export async function POST (req: NextRequest) {
 
     // CHECKS IF ENTRY EXISTS
     if (results?.rows.length) {
-      
-      const { password: hashPass } : { password: string } = results?.rows[0];
+
+      const { password: hashPass }: { password: string } = results?.rows[0];
 
       // COMPARE PASSWORD TO HASHED PASS IN DB
       if (bcrypt.compareSync(password, hashPass)) {
-        return NextResponse.json({msg: 'Successful Login!'})
-        
+
+
+        // SET COOKIE
+        const response = NextResponse.json({ msg: 'Successful Login!' });
+        response.cookies.set({
+          name: 'session',
+          value: 'token-random-string',
+          httpOnly: true,
+          maxAge: 20
+        })
+
+        return response;
+        // return NextResponse.json({msg: 'Successful Login!'})
+
       } else throw new Error('Incorrect Password');
     } else throw new Error('Email Does Not Exist');
-  n  
+    
   } catch (error) {
 
- 
-    return NextResponse.json({msg: (error as Error).message}, {status: 400})   
+
+    return NextResponse.json({ msg: (error as Error).message }, { status: 400 })
   } finally {
     release?.()
   }

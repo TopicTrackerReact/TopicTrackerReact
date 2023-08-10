@@ -1,13 +1,16 @@
 "use client"
 
-import { useRef } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import toast, { Toaster } from 'react-hot-toast'
+import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import toast, { Toaster } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { login } from '@/_redux/features/authSlice';
 
 
 export const SignUp = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   interface Ref {
     current: {
@@ -39,7 +42,8 @@ export const SignUp = () => {
     if (response === 'Email Already Exists') {
       window.alert(response)
     } else if (response === "Sign Up Successful") {
-      router.push('/home')
+      router.push('/home');
+      dispatch(login());
     }
   }
   return (

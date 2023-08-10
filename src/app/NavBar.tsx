@@ -1,18 +1,12 @@
 'use client'
 
 import Link from "next/link";
-import { useSelector } from "react-redux";
-import { RootState } from "@/_redux/store/store";
-
+import useAuthStatus from "@/_redux/features/authHook";
 
 export default function NavBar() {
 
-  // const cookie = cookies().get('tta-session');
-  // console.log('cookie: ', cookie);
-  // revalidatePath('/:')
-
-  const user = useSelector((state: RootState) => state.auth.userId);
-  console.log(user);
+  const isAuthenticated = useAuthStatus();
+  console.log('auth status: ', isAuthenticated);
 
   return (
     <div className="min-h-[20vh]">
@@ -22,12 +16,7 @@ export default function NavBar() {
       <div className="flex justify-around items-center w-1/4 gap-3 m-auto">
         <Link className="btn" href={'/home'}>Home</Link>
         <Link className="btn" href={'/flashcards'}>Study</Link>
-        {/* {cookie ? (
-          < Link className="btn" href={'/logout'}>Logout</Link>
-        ) : (
-          <Link className="btn" href={'/login'}>Login</Link>
-        )} */}
-        <Link className="btn" href={user ? '/logout' : '/login'}>{user ? 'Logout' : 'Login'}</Link>
+        <Link className="btn" href={isAuthenticated ? '/logout' : '/login'}>{isAuthenticated ? 'Logout' : 'Login'}</Link>
       </div>
     </div >
   )

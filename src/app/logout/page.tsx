@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { updateUser } from "@/_redux/slices/authSlice";
+import { logout } from "@/_redux/features/authSlice";
 
 export default function Logout() {
 
@@ -15,7 +15,7 @@ export default function Logout() {
     const response = await fetchResponse.json();
 
     router.push('/login');
-    dispatch(updateUser(''));
+    dispatch(logout());
   }
 
   return (

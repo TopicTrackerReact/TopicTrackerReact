@@ -3,7 +3,7 @@
 import { useRef } from "react"
 import { useRouter } from 'next/navigation'
 import { useDispatch } from "react-redux";
-import { updateUser } from "@/_redux/slices/authSlice";
+import { login } from "@/_redux/features/authSlice";
 import Link from "next/link";
 
 export default function Login() {
@@ -23,13 +23,13 @@ export default function Login() {
       },
       body: JSON.stringify({ email: email.current.value, password: password.current.value })
     })
-    const { msg, name } = await fetchResponse.json();
+    const { msg } = await fetchResponse.json();
 
     console.log(msg);
 
     if (msg === 'Successful Login!') {
       router.push('/home');
-      dispatch(updateUser(name));
+      dispatch(login());
     } else if (msg === 'Incorrect Password') alert('Wrong Password')
     else alert('Email does not exist')
   }

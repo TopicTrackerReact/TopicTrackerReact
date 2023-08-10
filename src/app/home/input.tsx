@@ -2,7 +2,7 @@
 
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { createTask } from '@/_redux/slices/taskSlice';
+import { createTask } from '@/_redux/features/taskSlice';
 import store from '@/_redux/store/store';
 import { AppDispatch } from '@/_redux/store/store'
 

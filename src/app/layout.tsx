@@ -20,8 +20,8 @@ export default function RootLayout({
     <html data-theme="light" lang="en">
       <body className='bg-white min-h-screen'>
         <Providers>
-          <NavBar />
           <main className='grow'>
+            <NavBar />
             {children}
           </main>
         </Providers>

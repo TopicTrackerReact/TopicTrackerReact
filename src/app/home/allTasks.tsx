@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/_redux/store/store";
-import { updateTask, updateCompleted, deleteTask } from "@/_redux/slices/taskSlice";
+import { updateTask, updateCompleted, deleteTask } from "@/_redux/features/taskSlice";
 import { AppDispatch } from '@/_redux/store/store'
 
 export const AllTasks = () => {
@@ -16,7 +16,7 @@ export const AllTasks = () => {
     isCompleted: false
   });
 
-  const [open, setOpen] = useState(0);
+  // const [open, setOpen] = useState(0);
 
   const { taskCache } = useSelector((state: RootState) => state.task);
   const keys = Object.keys(taskCache)
@@ -39,13 +39,13 @@ export const AllTasks = () => {
   const openModal = (name: string) => {
     setTask({ ...task, ...taskCache[Number(name)] })
     window.my_modal.showModal();
-    setOpen(open + 1)
+    // setOpen(open + 1)
   }
 
-  useEffect(() => {
-    console.log('Task: ', task);
-    console.log('Redux Task: ', taskCache[task.id]);
-  }, [open])
+  // useEffect(() => {
+  //   console.log('Task: ', task);
+  //   console.log('Redux Task: ', taskCache[task.id]);
+  // }, [open])
 
   const setCompleted = () => {
     setTask({ ...task, isCompleted: task.isCompleted ? false : true })

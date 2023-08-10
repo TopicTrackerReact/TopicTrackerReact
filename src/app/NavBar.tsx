@@ -5,6 +5,7 @@ import useAuthStatus from "@/_redux/features/authHook";
 
 export default function NavBar() {
 
+  // AUTHHOOK CHECKS FOR SESSION AND UPDATES REDUX STATE
   const isAuthenticated = useAuthStatus();
   console.log('auth status: ', isAuthenticated);
 

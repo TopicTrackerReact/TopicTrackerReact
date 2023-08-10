@@ -2,17 +2,19 @@
 
 import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import toast, { Toaster } from 'react-hot-toast'
 
 
 export const SignUp = () => {
   const router = useRouter();
 
-	interface Ref {
-		current: {
-			value: any
-		} | string
-	}
-  const emailRef = useRef<Ref>('')
+  interface Ref {
+    current: {
+      value: any
+    } | string
+  }
+  const emailRef = useRef('')
   const firstRef = useRef('')
   const lastRef = useRef('')
   const passRef = useRef('')
@@ -35,7 +37,7 @@ export const SignUp = () => {
     const { response } = await signUpResponse.json();
     console.log(response)
     if (response === 'Email Already Exists') {
-      window.alert('Email already exists')
+      window.alert(response)
     } else if (response === "Sign Up Successful") {
       router.push('/home')
     }
@@ -58,6 +60,7 @@ export const SignUp = () => {
       <label>Password</label>
       <input required={true} type='password' ref={passRef} className="input h-8 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200" />
       <button className="btn bg-gray-300 hover:bg-gray-400 mt-8" onClick={handleSignUp}>Sign Up</button>
+      <h1 className='my-5 self-center'>Already have an account? <Link className="hover:underline text-blue-600" href={'/login'}>Log In</Link></h1>
     </div>
   )
 }

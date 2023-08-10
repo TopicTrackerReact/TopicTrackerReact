@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     response.cookies.set({
       name: 'tta-session',
       value: sessionID,
-      httpOnly: true,
+      // httpOnly: true,
       secure: true,
       maxAge: 60
     })

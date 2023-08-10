@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Providers } from '@/_redux/provider'
-import { NavBar } from './NavBar'
+import NavBar from './NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 

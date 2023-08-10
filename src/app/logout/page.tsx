@@ -1,14 +1,21 @@
 'use client'
 
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { updateUser } from "@/_redux/slices/authSlice";
+
 export default function Logout() {
+
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   const loggingOut = async () => {
 
     const fetchResponse = await fetch('/api/auth/logout');
     const response = await fetchResponse.json();
 
-    console.log('response ', response);
-
+    router.push('/login');
+    dispatch(updateUser(''));
   }
 
   return (

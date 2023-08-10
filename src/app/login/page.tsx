@@ -2,10 +2,14 @@
 
 import { useRef } from "react"
 import { useRouter } from 'next/navigation'
+import { useDispatch } from "react-redux";
+import { updateUser } from "@/_redux/slices/authSlice";
+import Link from "next/link";
 
 export default function Login() {
 
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const email = useRef('');
   const password = useRef('');
@@ -19,12 +23,14 @@ export default function Login() {
       },
       body: JSON.stringify({ email: email.current.value, password: password.current.value })
     })
-    const { msg } = await fetchResponse.json();
+    const { msg, name } = await fetchResponse.json();
 
     console.log(msg);
 
-    if (msg === 'Successful Login!') router.push('/home');
-    else if (msg === 'Incorrect Password') alert('Wrong Password')
+    if (msg === 'Successful Login!') {
+      router.push('/home');
+      dispatch(updateUser(name));
+    } else if (msg === 'Incorrect Password') alert('Wrong Password')
     else alert('Email does not exist')
   }
 
@@ -40,7 +46,10 @@ export default function Login() {
         <button className="btn bg-gray-300 hover:bg-gray-400 mt-8" onClick={loggingIn}>
           Sign In
         </button>
+        <h1 className="my-5 text-center">
+          No account? <Link className="hover:underline text-blue-800" href={'/signup'}>Sign Up</Link>
+        </h1>
       </div>
-    </div>
+    </div >
   )
 }

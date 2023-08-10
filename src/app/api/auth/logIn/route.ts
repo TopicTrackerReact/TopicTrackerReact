@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         const sessionID = crypto.randomUUID();
         console.log('sessionID: ', sessionID);
 
-        const { userid }: { userid: number } = results?.rows[0];
+        const { userid, firstname }: { userid: number, firstname: string } = results?.rows[0];
         console.log('userid: ', userid);
 
         // UPDATE DB WITH SESSION
@@ -43,11 +43,11 @@ export async function POST(req: NextRequest) {
         await client?.query(sessionDB, [sessionID, userid])
 
         // SET COOKIE
-        const response = NextResponse.json({ msg: 'Successful Login!' });
+        const response = NextResponse.json({ msg: 'Successful Login!', name: firstname });
         response.cookies.set({
           name: 'tta-session',
           value: sessionID,
-          httpOnly: true,
+          // httpOnly: true,
           secure: true,
           maxAge: 60,
         })

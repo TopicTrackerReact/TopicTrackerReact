@@ -20,7 +20,7 @@ export const SignUp = () => {
 			<div className="flex justify-between">
 				<span className="flex flex-col">
 					<label>First Name</label>
-					<input className="input h-8 w-32 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"/>
+					<input className="input h-8 w-32 bg-zinc-300 hover:bg-gray-300 her:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"/>
 				</span>
 				<span className="flex flex-col">
 					<label>Last Name </label>

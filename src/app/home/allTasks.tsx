@@ -26,6 +26,7 @@ export const AllTasks = () => {
     arrOfTasks.push(
       <>
         <button id={currentId}
+          data-testid="button-test"
           className={
             `btn ${Number(currentId) === task.id ?
               (task.isCompleted ? 'bg-green-500 hover:bg-green-600' : null) : null}`

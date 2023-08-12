@@ -27,10 +27,10 @@ export const Input = () => {
 
   return (
     <div id='inputComp'>
-      <input type="text" value={task} onChange={
+      <input placeholder="Add Topic" type="text" value={task} onChange={
         (e) => setTask(e.target.value)
       } className="input input-bordered m-3 max-w-xs" />
-      <button className='btn' onClick={submitTask}>
+      <button data-testid="input-test" className='btn' onClick={submitTask}>
         Create
       </button>
     </div>

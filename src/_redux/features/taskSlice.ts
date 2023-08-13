@@ -60,7 +60,9 @@ export const taskSlice = createSlice({
       state.taskCache[action.payload].isCompleted = state.taskCache[action.payload].isCompleted === true ? false : true;
     },
     deleteTask(state, action: PayloadAction<number>) {
+      const oldTask = state.taskCache[action.payload]
       delete state.taskCache[action.payload];
+      delete state.taskNames[`${oldTask}`]
       state.totalTasks--
     }
   }

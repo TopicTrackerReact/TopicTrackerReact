@@ -1,7 +1,8 @@
 'use client';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { RootState } from '@/_redux/store/store';
 import { createTask } from '@/_redux/features/taskSlice';
 import store from '@/_redux/store/store';
 import { AppDispatch } from '@/_redux/store/store'
@@ -10,14 +11,16 @@ export const Input = () => {
 
   const [task, setTask] = useState('');
 
-  const { taskNames } = store.getState().task;
+  // const { taskNames } = store.getState().task;
+  const taskNames = useSelector((state: RootState) => state.task.taskNames);
 
   const dispatch = useDispatch<AppDispatch>();
 
   const submitTask = () => {
     console.log('task: ', task);
     if (task !== '') {
-      if (taskNames[task]) alert('No Duplicate Entries Allowed');
+      console.log(taskNames);
+      if (taskNames[task] !== undefined) alert('No Duplicate Entries Allowed');
       else {
         dispatch(createTask(task));
         setTask('');

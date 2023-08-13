@@ -10,6 +10,7 @@ import { AppDispatch } from '@/_redux/store/store'
 export const Input = () => {
 
   const [task, setTask] = useState('');
+  const [visible, setVisible] = useState(false);
 
   // const { taskNames } = store.getState().task;
   const {taskNames, taskCache} = useSelector((state: RootState) => state.task);
@@ -17,12 +18,13 @@ export const Input = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const submitTask = () => {
-    console.log('task: ', task);
+    // console.log('task: ', task);
     if (task !== '') {
-      console.log(taskNames);
+      // console.log(taskNames);
       const tempID = taskNames[task] !== undefined ? taskNames[task] : null;
-      if (tempID !== null && taskCache[tempID] !== undefined) alert('No Duplicate Entries Allowed');
+      if (tempID !== null && taskCache[tempID] !== undefined) setVisible(true);
       else {
+        if(visible) setVisible(false);
         dispatch(createTask(task));
         setTask('');
       }
@@ -37,6 +39,10 @@ export const Input = () => {
       <button data-testid="input-test" className='btn' onClick={submitTask}>
         Create
       </button>
+      {visible ? 
+      (<p id='error-tag' className='text-red-500 text-center mb-6'>
+        No Duplicate Entries Allowed
+      </p>) : null}
     </div>
   )
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
-import { fireEvent } from '@testing-library/react';
 import "@testing-library/jest-dom";
 
 // IMPORTS FOR TESTING
@@ -9,16 +8,10 @@ import { Input } from '@/app/home/input';
 import { AllTasks } from '@/app/home/allTasks';
 import { Providers } from '@/_redux/provider'
 
-const MockInput = () => {
+const MockTaskPage = () => {
     return (
         <Providers>
             <Input />
-        </Providers>
-    )
-}
-const MockAllTasks = () => {
-    return (
-        <Providers>
             <AllTasks />
         </Providers>
     )
@@ -30,9 +23,9 @@ describe('Input for new topics', () => {
     let button: HTMLElement;
 
     beforeEach(() => {
+        
         // Render component
-        render(<MockInput />)
-        render(<MockAllTasks />)
+        render(<MockTaskPage />);
 
         // Assign input and add button element
         inputElement = screen.getByPlaceholderText('Add Topic');

@@ -47,20 +47,21 @@ export const AllTasks = () => {
     setOpen(open + 1)
   }
 
-  useEffect(() => {
-    console.log('Current Task ID: ', task.id);
-    console.log('Task: ', task);
-    console.log('Redux Task: ', taskCache[task.id]);
-    console.log('Task Names: ', taskNames);
-  }, [open])
+  // useEffect(() => {
+  //   console.log('Current Task ID: ', task.id);
+  //   console.log('Task: ', task);
+  //   console.log('Redux Task: ', taskCache[task.id]);
+  //   console.log('Task Names: ', taskNames);
+  // }, [open])
 
   const setCompleted = () => {
     setTask({ ...task, isCompleted: task.isCompleted ? false : true })
     dispatch(updateCompleted(task.id))
   }
-  const deleteButton = (e) => {
-    console.log('delete button event: ', e.target.id)
-    dispatch(deleteTask(e.target.id))
+
+  const deleteButton = () => {
+    // console.log('delete button event: ', e.target.id)
+    dispatch(deleteTask(task.id))
   }
 
   // const notesRef = useRef(task.notes)
@@ -80,7 +81,7 @@ export const AllTasks = () => {
                 Save & Close
               </button>
             </div>
-            <button id={(task.id).toString()} className="btn btn-sm btn-ghost" onClick={(e) => deleteButton(e)}>
+            <button className="btn btn-sm btn-ghost" onClick={deleteButton}>
               🗑️
             </button>
           </form>

@@ -12,7 +12,7 @@ export default function NavBar() {
   return (
     <div className="min-h-[20vh]">
       <h1 className="text-4xl text-center p-5">
-        Topic Tracker
+        {`Topical`}
       </h1>
       <div className="flex justify-around items-center w-1/4 gap-3 m-auto">
         <Link className="btn" href={'/home'}>Home</Link>

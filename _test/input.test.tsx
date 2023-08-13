@@ -26,47 +26,37 @@ const MockAllTasks = () => {
 
 describe('Input for new topics', () => {
 
-    beforeAll(() => {
+    let inputElement: HTMLElement;
+    let button: HTMLElement;
+
+    beforeEach(() => {
         // Render component
         render(<MockInput />)
         render(<MockAllTasks />)
 
         // Assign input and add button element
-        const inputElement: HTMLElement = screen.getByPlaceholderText('Add Topic');
-        const button: HTMLElement = screen.getByTestId('input-test');
+        inputElement = screen.getByPlaceholderText('Add Topic');
+        button = screen.getByTestId('input-test');
     });
 
-    it ('Should render button properly', () => {
-        render(<MockInput />);
-
-        const button = screen.getByRole('button');
-        const buttonText = 'Create';
-
-        expect(button).toHaveTextContent(buttonText)
-    })
     it ('Should create a new button with proper text', () => {
-        // Render component
-        render(<MockInput />)
-        render(<MockAllTasks />)
-        // Identify button to test
-        const inputElement: HTMLElement = screen.getByPlaceholderText('Add Topic')
-        const button: HTMLElement = screen.getByRole('button')
-        // Simulate button click
+
+        // SIMULATE BUTTON CLICK
         fireEvent.change(inputElement, { target: { value: 'React'}})
         fireEvent.click(button)
+
         // Check to see if a new element has been rendered
         const newButton = screen.getByTestId('button-test')
         expect(newButton).toBeInTheDocument()
         expect(newButton).toHaveTextContent('REACT')
     })
     it ('Should not render the same button twice', () => {
-        // Render component
-        render(<MockInput />)
-        render(<MockAllTasks />)
-        // Identify button to test
-        const inputElement: HTMLElement = screen.getByPlaceholderText('Add Topic');
-        const button: HTMLElement = screen.getByTestId('input-test');
-        // Simulate button click
+
+        // SIMULATE FIRST TASK ENTRY
+        fireEvent.change(inputElement, { target: { value: 'React'}})
+        fireEvent.click(button)
+
+        // SIMULATE DUPLICATE TASK ENTRY
         fireEvent.change(inputElement, { target: { value: 'React'}})
         fireEvent.click(button)
 
@@ -75,12 +65,8 @@ describe('Input for new topics', () => {
         expect(allButtons.length).toBe(1)
     })
     it ('Should render multiple buttons properly', () => {
-        render(<MockInput />)
-        render(<MockAllTasks />)
 
-        const inputElement: HTMLElement = screen.getByPlaceholderText('Add Topic')
-        const button: HTMLElement = screen.getByTestId('input-test');
-
+        // ADD MULTIPLE NEW BUTTONS
         const tasks: string[] = ['React', 'Hooks', 'Auth'];
         tasks.forEach((el: string) => {
             fireEvent.change(inputElement, { target: { value: el }});

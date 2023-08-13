@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from "react";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/_redux/store/store";
@@ -16,15 +17,18 @@ export const AllTasks = () => {
     isCompleted: false
   });
 
-  // const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(0);
 
-  const { taskCache } = useSelector((state: RootState) => state.task);
+  const { taskCache, taskNames } = useSelector((state: RootState) => state.task);
   const keys = Object.keys(taskCache)
 
+  // useSelector((state: RootState) => console.log('task reducer: ', state.task.taskNames));
+  // console.log('task Cache: ', taskCache)
+
   const arrOfTasks: any[] = [];
-  keys.forEach(currentId => {
+  keys.forEach((currentId, idx) => {
     arrOfTasks.push(
-      <>
+      <Fragment key={idx}>
         <button id={currentId}
           data-testid="button-test"
           className={
@@ -34,23 +38,29 @@ export const AllTasks = () => {
           onClick={() => openModal(currentId)}>
           {taskCache[Number(currentId)].taskName}
         </button>
-      </>)
+      </Fragment>)
   })
-
   const openModal = (name: string) => {
-    setTask({ ...task, ...taskCache[Number(name)] })
+    // console.log('current task id: ', task.id);
+    setTask({ ...task, ...taskCache[Number(name)] });
     window.my_modal.showModal();
-    // setOpen(open + 1)
+    setOpen(open + 1)
   }
 
-  // useEffect(() => {
-  //   console.log('Task: ', task);
-  //   console.log('Redux Task: ', taskCache[task.id]);
-  // }, [open])
+  useEffect(() => {
+    console.log('Current Task ID: ', task.id);
+    console.log('Task: ', task);
+    console.log('Redux Task: ', taskCache[task.id]);
+    console.log('Task Names: ', taskNames);
+  }, [open])
 
   const setCompleted = () => {
     setTask({ ...task, isCompleted: task.isCompleted ? false : true })
     dispatch(updateCompleted(task.id))
+  }
+  const deleteButton = (e) => {
+    console.log('delete button event: ', e.target.id)
+    dispatch(deleteTask(e.target.id))
   }
 
   // const notesRef = useRef(task.notes)
@@ -70,7 +80,7 @@ export const AllTasks = () => {
                 Save & Close
               </button>
             </div>
-            <button className="btn btn-sm btn-ghost" onClick={() => dispatch(deleteTask(task.id))}>
+            <button id={(task.id).toString()} className="btn btn-sm btn-ghost" onClick={(e) => deleteButton(e)}>
               🗑️
             </button>
           </form>

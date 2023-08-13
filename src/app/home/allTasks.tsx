@@ -1,12 +1,14 @@
 'use client';
 
+import { Fragment } from "react";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState } from "@/redux/store/store";
-import { updateTask, updateCompleted, deleteTask } from "@/redux/slices/taskSlice";
+import type { RootState } from "@/_redux/store/store";
+import { updateTask, updateCompleted, deleteTask } from "@/_redux/features/taskSlice";
+import { AppDispatch } from '@/_redux/store/store'
 
 export const AllTasks = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [task, setTask] = useState({
     id: NaN,
@@ -17,38 +19,49 @@ export const AllTasks = () => {
 
   const [open, setOpen] = useState(0);
 
-  const { taskCache } = useSelector((state: RootState) => state.task);
+  const { taskCache, taskNames } = useSelector((state: RootState) => state.task);
   const keys = Object.keys(taskCache)
 
+  // useSelector((state: RootState) => console.log('task reducer: ', state.task.taskNames));
+  // console.log('task Cache: ', taskCache)
+
   const arrOfTasks: any[] = [];
-  keys.forEach(currentId => {
+  keys.forEach((currentId, idx) => {
     arrOfTasks.push(
-      <>
+      <Fragment key={idx}>
         <button id={currentId}
+          data-testid="button-test"
           className={
             `btn ${Number(currentId) === task.id ?
-              (task.isCompleted ? 'bg-green-700 hover:bg-green-900' : null) : null}`
+              (task.isCompleted ? 'bg-green-500 hover:bg-green-600' : null) : null}`
           }
           onClick={() => openModal(currentId)}>
           {taskCache[Number(currentId)].taskName}
         </button>
-      </>)
+      </Fragment>)
   })
-
   const openModal = (name: string) => {
-    setTask({ ...task, ...taskCache[Number(name)] })
+    // console.log('current task id: ', task.id);
+    setTask({ ...task, ...taskCache[Number(name)] });
     window.my_modal.showModal();
     setOpen(open + 1)
   }
 
-  useEffect(() => {
-    console.log('Task: ', task);
-    console.log('Redux Task: ', taskCache[task.id]);
-  }, [open])
+  // useEffect(() => {
+  //   console.log('Current Task ID: ', task.id);
+  //   console.log('Task: ', task);
+  //   console.log('Redux Task: ', taskCache[task.id]);
+  //   console.log('Task Names: ', taskNames);
+  // }, [open])
 
   const setCompleted = () => {
     setTask({ ...task, isCompleted: task.isCompleted ? false : true })
     dispatch(updateCompleted(task.id))
+  }
+
+  const deleteButton = () => {
+    // console.log('delete button event: ', e.target.id)
+    dispatch(deleteTask(task.id))
   }
 
   // const notesRef = useRef(task.notes)
@@ -58,7 +71,7 @@ export const AllTasks = () => {
       <dialog id='my_modal' className="modal absolute">
         <div className="modal-box flex flex-col">
           <form method="dialog" className="flex flex-col gap-3">
-            <input className="input focus:input-bordered  max-w-xs bg-inherit focus:outline-none" value={task.taskName !== '' ? task.taskName : ''} onChange={(e) => setTask({ ...task, taskName: e.target.value.toUpperCase() })} />
+            <input className="input focus:input-bordered bg-inherit m-auto text-center font-bold focus:outline-none" value={task.taskName !== '' ? task.taskName : ''} onChange={(e) => setTask({ ...task, taskName: e.target.value.toUpperCase() })} />
             <textarea className="textarea textarea-bordered focus:outline-none" value={task.notes !== '' ? task.notes : ''} onChange={(e) => setTask({ ...task, notes: e.target.value })} />
             <div className="flex justify-around">
               <button className="btn btn-sm btn-ghost" onClick={() => setTask({ ...task, ...taskCache[task.id] })}>
@@ -68,7 +81,7 @@ export const AllTasks = () => {
                 Save & Close
               </button>
             </div>
-            <button className="btn btn-sm btn-ghost" onClick={() => dispatch(deleteTask(task.id))}>
+            <button className="btn btn-sm btn-ghost" onClick={deleteButton}>
               🗑️
             </button>
           </form>

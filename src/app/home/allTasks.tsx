@@ -17,13 +17,10 @@ export const AllTasks = () => {
     isCompleted: false
   });
 
-  const [open, setOpen] = useState(0);
+  // const [open, setOpen] = useState(0);
 
   const { taskCache, taskNames } = useSelector((state: RootState) => state.task);
   const keys = Object.keys(taskCache)
-
-  // useSelector((state: RootState) => console.log('task reducer: ', state.task.taskNames));
-  // console.log('task Cache: ', taskCache)
 
   const arrOfTasks: any[] = [];
   keys.forEach((currentId, idx) => {
@@ -32,8 +29,7 @@ export const AllTasks = () => {
         <button id={currentId}
           data-testid="button-test"
           className={
-            `btn ${Number(currentId) === task.id ?
-              (task.isCompleted ? 'bg-green-500 hover:bg-green-600' : null) : null}`
+            `btn ${taskCache[Number(currentId)].isCompleted ? 'bg-green-500 hover:bg-green-600' : null}`
           }
           onClick={() => openModal(currentId)}>
           {taskCache[Number(currentId)].taskName}
@@ -44,7 +40,7 @@ export const AllTasks = () => {
     // console.log('current task id: ', task.id);
     setTask({ ...task, ...taskCache[Number(name)] });
     window.my_modal.showModal();
-    setOpen(open + 1)
+    // setOpen(open + 1)
   }
 
   // useEffect(() => {

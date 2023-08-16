@@ -37,7 +37,7 @@ export const AllTasks = () => {
       </Fragment>)
   })
   const openModal = (name: string) => {
-    // console.log('current task id: ', task.id);
+    // console.log('current task id: ', task.id)
     setTask({ ...task, ...taskCache[Number(name)] });
     window.my_modal.showModal();
     // setOpen(open + 1)

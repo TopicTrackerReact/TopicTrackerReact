@@ -21,3 +21,6 @@ body {
   color: rgb(var(--foreground-rgb));
 
 } */
+main {
+  flex-grow: 1
+}

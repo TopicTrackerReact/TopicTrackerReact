@@ -45,19 +45,28 @@ export async function GET(req: NextRequest) {
 
     const taskData = await client?.query(getDataQuery, [email]);
 
-    const getMaxCount = `
-    SELECT COUNT(*) FROM tasks
+    const getTasksAndCount = `
+    WITH task_count AS (
+      SELECT COUNT(*) AS total_count FROM tasks
+    )
+    SELECT topic, taskid, (SELECT total_count FROM task_count) AS count FROM tasks;
     `;
 
-    const data = await client?.query(getMaxCount);
-    console.log('data from Max ID call: ', data?.rows[0].count);
+    const data = await client?.query(getTasksAndCount);
+    console.log('data from Max ID call: ', data?.rows[0].count[0]);
+    console.log('data for tasknames: ', data?.rows);
 
     const stateMock: InitialState = {
       taskCache: {},
       taskNames: {},
       totalTasks: taskData?.rows.length as number,
-      maxId: data?.rows[0].count,
+      maxId: data?.rows[0].count[0],
     };
+
+    data?.rows.forEach((entry: { topic: string, taskid: number, count: string }) => {
+      const { topic: taskName, taskid: id } = entry;
+      stateMock.taskNames[taskName] = id - 1;
+    })
 
     interface taskEntry { userid: number, taskid: number, notes: string | null, completed: boolean, topic: string }
 
@@ -66,7 +75,6 @@ export async function GET(req: NextRequest) {
       const task = { id: id - 1, notes: dbNotes ? dbNotes : '', isCompleted, taskName }
 
       stateMock.taskCache[id - 1] = task;
-      stateMock.taskNames[taskName] = id - 1;
     });
 
     console.log('Initial State: ', stateMock);

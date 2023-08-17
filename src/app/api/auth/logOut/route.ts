@@ -7,6 +7,7 @@ export async function GET(req: NextRequest) {
 
   try {
     // DECONSTRUCT COOKIE
+
     const { value: sessionID } = req.cookies.get('tta-session') as { name: string, value: string };
 
     // DELETE SESSION FROM SESSION TABLE FOR CURRENT USER

@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const taskApi = createApi({
   reducerPath: 'taskApi',
@@ -10,8 +10,7 @@ export const taskApi = createApi({
   }),
 })
 // export {  } = taskApi.endpoints
-export default taskApi.reducer
-
+export const { useGetUserDataQuery } = taskApi
 // make a call to the next route
 // next route will get from the api, and process the data
 // returned data will be sent to redux

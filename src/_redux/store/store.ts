@@ -4,6 +4,7 @@ import authReducer from '../features/authSlice';
 import { taskApi } from '../features/apiSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 // const persistConfig = {
 //   key: 'root',
@@ -25,7 +26,7 @@ const preloadedState = {
 const rootReducer = combineReducers({
   task: taskReducer,
   auth: authReducer,
-  taskApi: taskApi.reducer
+  [taskApi.reducerPath]: taskApi.reducer
 });
 
 // const persistedReducer = persistReducer(persistConfig, taskReducer);
@@ -34,7 +35,7 @@ export const setUpStore = (preloadedState?: PreloadedState<RootState>) => config
   reducer: {
     task: taskReducer,
     auth: authReducer,
-    taskApi: taskApi.reducer
+    [taskApi.reducerPath]: taskApi.reducer
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware().concat(taskApi.middleware)
@@ -43,7 +44,9 @@ export const setUpStore = (preloadedState?: PreloadedState<RootState>) => config
 })
 
 const store = setUpStore();
+setupListeners(store.dispatch)
 export default store;
+
 // export const persistor = persistStore(store);
 
 

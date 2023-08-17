@@ -2,16 +2,17 @@
 
 import { Provider } from 'react-redux';
 import store from './store/store';
-import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
+// import persistor from './store/store';
 import { taskApi } from './features/apiSlice';
+// import { PersistGate } from 'redux-persist/integration/react';
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Provider store={store}>
-      {/* <ApiProvider api={taskApi}> */}
+      {/* <PersistGate loading={null} persistor={persistor}> */}
       {children}
-      {/* </ApiProvider> */}
+      {/* </PersistGate> */}
     </Provider>
   )
 }

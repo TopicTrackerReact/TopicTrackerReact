@@ -2,6 +2,13 @@ import { PreloadedState, configureStore, combineReducers } from '@reduxjs/toolki
 import taskReducer from '../features/taskSlice';
 import authReducer from '../features/authSlice';
 import { taskApi } from '../features/apiSlice';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+// };
 
 const preloadedState = {
   task: {
@@ -21,6 +28,8 @@ const rootReducer = combineReducers({
   taskApi: taskApi.reducer
 });
 
+// const persistedReducer = persistReducer(persistConfig, taskReducer);
+
 export const setUpStore = (preloadedState?: PreloadedState<RootState>) => configureStore({
   reducer: {
     task: taskReducer,
@@ -35,6 +44,7 @@ export const setUpStore = (preloadedState?: PreloadedState<RootState>) => config
 
 const store = setUpStore();
 export default store;
+// export const persistor = persistStore(store);
 
 
 // export default store;

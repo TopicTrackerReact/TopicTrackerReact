@@ -6,10 +6,15 @@ import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/_redux/store/store";
 import { updateTask, updateCompleted, deleteTask, updateState } from "@/_redux/features/taskSlice";
 import { AppDispatch } from '@/_redux/store/store'
+import { taskApi } from "@/_redux/features/apiSlice";
 
 
 export const AllTasks = () => {
   const dispatch = useDispatch<AppDispatch>();
+
+
+  const [initialized, setInitialized] = useState(false);
+  // const noTaskNames = useSelector((state: RootState) => Object.keys(state.task.taskNames).length === 0)
 
   const [task, setTask] = useState({
     id: NaN,
@@ -36,12 +41,13 @@ export const AllTasks = () => {
 
   }
 
-
+  if (email && !initialized) setInitialized(true), helper(email);
+  // if (noTaskNames) setInitialized(false);
 
   const { taskCache, taskNames } = useSelector((state: RootState) => state.task);
   const keys = Object.keys(taskCache)
 
-  console.log('Task Cache: ', taskCache);
+  console.log(taskNames);
 
   const arrOfTasks: any[] = [];
   keys.forEach((currentId, idx) => {

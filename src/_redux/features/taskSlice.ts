@@ -45,12 +45,15 @@ export const taskSlice = createSlice({
 
       console.log('payload for update state: ', action.payload);
 
+      // if (state.totalTasks === 0 && totalTasks !== 0) {
+
+      // }
       // state = action.payload;
 
-      // state.taskCache = taskCache;
-      // state.taskNames = taskNames
-      // state.maxId = maxId;
-      // state.totalTasks = totalTasks;
+      state.taskCache = taskCache;
+      state.taskNames = taskNames
+      state.maxId = maxId;
+      state.totalTasks = totalTasks;
 
     },
 

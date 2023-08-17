@@ -16,12 +16,14 @@ export default function Login() {
 
   const loggingIn = async () => {
 
+    const newEmail = email.current.value;
+
     const fetchResponse = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email: email.current.value, password: password.current.value })
+      body: JSON.stringify({ email: newEmail, password: password.current.value })
     })
     const { msg } = await fetchResponse.json();
 
@@ -29,7 +31,9 @@ export default function Login() {
 
     if (msg === 'Successful Login!') {
       router.push('/home');
-      dispatch(login());
+      dispatch(login(newEmail));
+
+
     } else if (msg === 'Incorrect Password') alert('Wrong Password')
     else alert('Email does not exist')
   }

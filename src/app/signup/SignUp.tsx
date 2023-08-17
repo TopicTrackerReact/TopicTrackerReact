@@ -43,7 +43,7 @@ export const SignUp = () => {
       window.alert(response)
     } else if (response === "Sign Up Successful") {
       router.push('/home');
-      dispatch(login());
+      dispatch(login(email));
     }
   }
   return (

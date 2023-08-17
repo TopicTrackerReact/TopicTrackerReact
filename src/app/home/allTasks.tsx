@@ -4,8 +4,9 @@ import { Fragment } from "react";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/_redux/store/store";
-import { updateTask, updateCompleted, deleteTask } from "@/_redux/features/taskSlice";
+import { updateTask, updateCompleted, deleteTask, updateState } from "@/_redux/features/taskSlice";
 import { AppDispatch } from '@/_redux/store/store'
+
 
 export const AllTasks = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,9 +19,29 @@ export const AllTasks = () => {
   });
 
   // const [open, setOpen] = useState(0);
+  const { email } = useSelector((state: RootState) => state.auth);
+
+  const helper = async (input: string) => {
+
+    console.log('helper input: ', input);
+
+    const data = await fetch(`/api/sql/getUser?email=${input}`);
+    const state = await data.json();
+
+    console.log('in helper');
+    console.log('fetch data: ', data);
+    console.log('state: ', state.initialState);
+
+    dispatch(updateState(state.initialState));
+
+  }
+
+
 
   const { taskCache, taskNames } = useSelector((state: RootState) => state.task);
   const keys = Object.keys(taskCache)
+
+  console.log('Task Cache: ', taskCache);
 
   const arrOfTasks: any[] = [];
   keys.forEach((currentId, idx) => {

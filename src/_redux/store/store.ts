@@ -1,6 +1,7 @@
 import { PreloadedState, configureStore, combineReducers } from '@reduxjs/toolkit';
 import taskReducer from '../features/taskSlice';
 import authReducer from '../features/authSlice';
+import { taskApi } from '../features/apiSlice';
 
 const preloadedState = {
   task: {
@@ -16,13 +17,18 @@ const preloadedState = {
 
 const rootReducer = combineReducers({
   task: taskReducer,
-  auth: authReducer
+  auth: authReducer,
+  taskApi: taskApi.reducer
 });
 
 export const setUpStore = (preloadedState?: PreloadedState<RootState>) => configureStore({
   reducer: {
     task: taskReducer,
-    auth: authReducer
+    auth: authReducer,
+    taskApi: taskApi.reducer
+  },
+  middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware().concat(taskApi.middleware)
   },
   preloadedState
 })

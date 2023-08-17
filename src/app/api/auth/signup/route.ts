@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     await dbClient?.query(sessionsQuery, [userid, sessionID]);
 
     // SET COOKIE
-    const response = NextResponse.json({ response: 'Sign Up Successful' });
+    const response = NextResponse.json({ response: 'Sign Up Successful', email });
     response.cookies.set({
       name: 'tta-session',
       value: sessionID,

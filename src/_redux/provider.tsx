@@ -9,9 +9,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Provider store={store}>
-      <ApiProvider api={taskApi}>
-        {children}
-      </ApiProvider>
+      {/* <ApiProvider api={taskApi}> */}
+      {children}
+      {/* </ApiProvider> */}
     </Provider>
   )
 }

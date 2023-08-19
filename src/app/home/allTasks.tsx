@@ -28,7 +28,17 @@ export const AllTasks = () => {
   });
 
   // const [open, setOpen] = useState(0);
+
   const { email } = useSelector((state: RootState) => state.auth);
+  const { data } = useGetUserDataQuery(email);
+  console.log("dataQuery :", data);
+  if (data !== undefined && !initialized) {
+    // const { data } = dataQuery;
+    const { initialState } = data;
+    dispatch(updateState(initialState));
+    setInitialized(true);
+  }
+
   // console.log(email);
 
   // const helper = async (input: string) => {
@@ -45,14 +55,6 @@ export const AllTasks = () => {
   //   dispatch(updateState(state.initialState));
 
   // }
-  const { data } = useGetUserDataQuery(email);
-  console.log("dataQuery :", data);
-  if (data !== undefined && !initialized) {
-    // const { data } = dataQuery;
-    const { initialState } = data;
-    dispatch(updateState(initialState));
-    setInitialized(true);
-  }
 
   // if (email && !initialized) setInitialized(true), helper(email);
   // if (noTaskNames) setInitialized(false);

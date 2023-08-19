@@ -30,10 +30,8 @@ export default function Login() {
     console.log(msg);
 
     if (msg === 'Successful Login!') {
-      router.push('/home');
       dispatch(login(newEmail));
-
-
+      router.push('/home');
     } else if (msg === 'Incorrect Password') alert('Wrong Password')
     else alert('Email does not exist')
   }

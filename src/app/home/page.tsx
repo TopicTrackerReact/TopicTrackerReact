@@ -1,3 +1,5 @@
+"use client"
+
 import { Input } from './input'
 import { AllTasks } from './allTasks'
 

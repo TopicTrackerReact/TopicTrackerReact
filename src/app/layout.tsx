@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { Providers } from '@/_redux/provider'
 import NavBar from './NavBar'
+import { ThemeProvider } from './theme-provider';
 
 
 const montserrat = Montserrat({ subsets: ['latin'] })
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html data-theme="light" lang="en">
       <body className='bg-neutral-100 min-h-screen'>
+
         <Providers>
           <main className={montserrat.className}>
             <NavBar />

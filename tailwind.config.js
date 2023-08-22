@@ -15,7 +15,8 @@ module.exports = {
       fontFamily: {},
     },
   },
-  plugins: [require("daisyui"), require("flowbite/plugin")],
+  darkMode: ["class"],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: ["light", "dark", "cupcake"],
   },

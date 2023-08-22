@@ -4,7 +4,7 @@ import { Montserrat } from 'next/font/google'
 import { Providers } from '@/_redux/provider'
 import NavBar from './NavBar'
 import { ThemeProvider } from './theme-provider';
-
+import { ThemeSwitcher } from './theme-switcher'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -20,14 +20,16 @@ export default function RootLayout({
 }) {
   return (
     <html data-theme="light" lang="en">
-      <body className='bg-neutral-100 min-h-screen'>
-
-        <Providers>
-          <main className={montserrat.className}>
-            <NavBar />
-            {children}
-          </main>
-        </Providers>
+      <body className='bg-neutral-100 dark:bg-slate-900 min-h-screen'>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <Providers>
+            <ThemeSwitcher />
+            <main className={montserrat.className}>
+              <NavBar />
+              {children}
+            </main>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   )

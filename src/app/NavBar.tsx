@@ -13,11 +13,11 @@ export default function NavBar() {
 
 
   return (
-    <div className="min-h-[20vh]">
+    <div className="fixed w-screen">
       <h1 className="text-4xl text-center p-5">
         <Link className="drop-shadow-md" href={'/'}>Timely</Link>
       </h1>
-      <div className="flex justify-around items-center w-1/4 gap-3 m-auto text-xl mt-6">
+      <div className="flex justify-around items-center min-w-[30rem] w-1/4 gap-3 m-auto text-xl mt-6 sm:justify-between bg-green-100">
         <Link className="hover:text-stone-200 drop-shadow-md" href={'/home'}>Home</Link>
         <Link className="hover:text-stone-200 drop-shadow-md" href={'/flashcards'}>Study</Link>
         <Link className="hover:text-stone-200 drop-shadow-md" href={isAuthenticated ? '/logout' : '/login'}>{isAuthenticated ? 'Logout' : 'Login'}</Link>

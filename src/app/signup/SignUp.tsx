@@ -47,7 +47,7 @@ export const SignUp = () => {
     }
   }
   return (
-    <div className="flex flex-col bg-slate-100 justify-around p-12 drop-shadow-xl rounded-lg">
+    <div className="flex flex-col bg-slate-100 justify-around p-12 drop-shadow-xl rounded-lg mt-[9rem]">
       <h1 className="self-center text-lg">Get Started</h1>
       <label>Email</label>
       <input required={true} ref={emailRef} type='email' className="input h-8 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200" />

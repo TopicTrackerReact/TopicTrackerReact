@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html data-theme="light" lang="en">
-      <body className='bg-neutral-100 dark:bg-slate-900 min-h-screen'>
+      <body className='bg-zinc-100 dark:bg-slate-900 min-h-screen'>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Providers>
             <ThemeSwitcher />

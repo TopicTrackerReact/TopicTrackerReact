@@ -3,9 +3,9 @@ import { AllTasks } from "./home/allTasks";
 
 export default function Landing() {
   return (
-    <div className="bg-gradient-to-r from-slate-300 to-slate-100 dark:from-slate-800 dark:to-slate-600 w-screen h-screen pt-[10rem]">
-      <div className="flex justify-center items-end pb-10 w-screen h-[40rem] bg-orange-100">
-        <div className="flex flex-col items-center h-[28rem] xl:w-[38rem] 2xl:w-[48rem] bg-green-100">
+    <div className="bg-zinc-50 dark:bg-zinc-800 w-screen h-100 pt-[10rem]">
+      <div className="flex justify-center items-center w-screen h-[40rem]">
+        <div className="flex flex-col items-center h-[28rem] xl:w-[38rem] 2xl:w-[48rem] bg-stone-300 pt-14">
           <h1 className="text-[3rem]">Get started with Timely</h1>
           <div className="p-10 flex flex-col items-center w-[42rem]">
             <h3 className="text-2xl text-center">
@@ -16,7 +16,7 @@ export default function Landing() {
             </h3>
           </div>
         </div>
-        <div className="flex flex-col items-center rounded-xl shadow-2xl border-stone-100 bg-stone-100 h-[35rem] xl:w-[48rem] 2xl:w-[60rem] hover:scale-105 ease-in duration-200">
+        <div className="flex flex-col items-center rounded-2xl shadow-2xl bg-stone-100 h-[35rem] xl:w-[50rem] 2xl:w-[60rem] hover:scale-[1.02] ease-in duration-200">
           <Input />
           <AllTasks />
         </div>

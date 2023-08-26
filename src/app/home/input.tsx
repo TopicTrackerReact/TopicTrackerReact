@@ -34,7 +34,7 @@ export const Input = () => {
   };
 
   return (
-    <div id="inputComp" className="mt-[11rem]">
+    <div id="inputComp">
       <input
         placeholder="Add Topic"
         type="text"

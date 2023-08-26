@@ -5,7 +5,7 @@ import { AllTasks } from './allTasks'
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-between items-center">
+    <div className="flex flex-col justify-between items-center mt-[10rem]">
       <Input />
       <AllTasks />
     </div>

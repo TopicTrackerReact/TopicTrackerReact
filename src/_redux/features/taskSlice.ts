@@ -38,6 +38,25 @@ export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
+
+    updateState(state, action: PayloadAction<InitialState>) {
+
+      const { taskCache, taskNames, maxId, totalTasks } = action.payload;
+
+      console.log('payload for update state: ', action.payload);
+
+      // if (state.totalTasks === 0 && totalTasks !== 0) {
+
+      // }
+      // state = action.payload;
+
+      state.taskCache = taskCache;
+      state.taskNames = taskNames
+      state.maxId = maxId;
+      state.totalTasks = totalTasks;
+
+    },
+
     // For when user creates new task in input (input === string)
     createTask(state, action: PayloadAction<string>) {
 
@@ -64,7 +83,7 @@ export const taskSlice = createSlice({
       else newID = state.maxId++;
 
       state.taskNames[newName] = newID;
-      state.taskCache[newID] = {...action.payload, id: newID};
+      state.taskCache[newID] = { ...action.payload, id: newID };
 
     },
     // When user toggles complete button
@@ -81,7 +100,7 @@ export const taskSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { createTask, updateTask, updateCompleted, deleteTask } = taskSlice.actions
+export const { updateState, createTask, updateTask, updateCompleted, deleteTask } = taskSlice.actions
 
 export default taskSlice.reducer
 

@@ -14,7 +14,7 @@ import { AppDispatch } from "@/_redux/store/store";
 import { taskApi } from "@/_redux/features/apiSlice";
 import { useGetUserDataQuery } from "@/_redux/features/apiSlice";
 
-export const AllTasks = () => {
+export const AllTasksDemo = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [initialized, setInitialized] = useState(false);
@@ -73,11 +73,11 @@ export const AllTasks = () => {
         <button
           id={currentId}
           data-testid="button-test"
-          className={`btn  ${
+          className={`btn ${
             taskCache[Number(currentId)].isCompleted
               ? "bg-green-500 hover:bg-green-600"
               : "dark:bg-zinc-700 dark:text-white border-0 hover:scale-105"
-          } `}
+          }`}
           onClick={() => openModal(currentId)}
         >
           {taskCache[Number(currentId)].taskName}
@@ -113,7 +113,7 @@ export const AllTasks = () => {
   return (
     <div className="flex flex-wrap gap-3">
       {arrOfTasks}
-      <dialog id="my_modal" className="modal absolute">
+      <dialog id="my_modal" className="modal fixed left-0">
         <div className="modal-box flex flex-col">
           <form method="dialog" className="flex flex-col gap-3">
             <input

@@ -1,10 +1,12 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import { Providers } from '@/_redux/provider'
 import NavBar from './NavBar'
+import { ThemeProvider } from './theme-provider';
+import { ThemeSwitcher } from './theme-switcher'
 
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Topic Tracker',
@@ -18,13 +20,16 @@ export default function RootLayout({
 }) {
   return (
     <html data-theme="light" lang="en">
-      <body className='bg-white min-h-screen'>
-        <Providers>
-          <main className='grow'>
-            <NavBar />
-            {children}
-          </main>
-        </Providers>
+      <body className='transition duration-200 ease-in bg-zinc-50 dark:bg-zinc-900 h-screen'>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <Providers>
+            <ThemeSwitcher />
+            <main className={montserrat.className}>
+              <NavBar />
+              {children}
+            </main>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   )

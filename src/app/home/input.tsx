@@ -42,7 +42,7 @@ export const Input = () => {
         onChange={(e) => setTask(e.target.value.toUpperCase())}
         className="input input-bordered m-3 max-w-xs"
       />
-      <button data-testid="input-test" className="btn" onClick={submitTask}>
+      <button data-testid="input-test" className="btn hover:scale-105" onClick={submitTask}>
         Create
       </button>
       {visible ? (

@@ -19,7 +19,7 @@ export default function Logout() {
   }
 
   return (
-    <div className="min-h-screen min-w-full">
+    <div className="min-h-screen min-w-full pt-[10rem]">
       <div className="flex flex-col items-center m-auto">
         <h1>Are you sure you want to log out?</h1>
         <button className="btn" onClick={loggingOut}>

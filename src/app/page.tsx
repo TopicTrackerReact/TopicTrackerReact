@@ -16,9 +16,9 @@ export default function Landing() {
           <div className="h-[6.5rem] text-5xl ">
             <div className="">
               Get started with
-              <div className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+              <p className="pb-4 font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
                 Timely
-              </div>
+              </p>
             </div>
           </div>
           <div className=" w-3/4">

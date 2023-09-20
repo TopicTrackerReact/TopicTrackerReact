@@ -56,7 +56,7 @@ export const SignUp = () => {
     }
   };
   return (
-    <div className="flex flex-col bg-slate-100 justify-around p-12 drop-shadow-xl rounded-lg mt-[6rem]">
+    <div className="flex flex-col bg-[#FAFAF9] dark:bg-zinc-800 dark:text-white justify-around p-12 drop-shadow-xl rounded-lg mt-[6rem]">
       <h1 className="self-center text-lg">Get Started</h1>
       <label>Email</label>
       <input

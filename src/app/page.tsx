@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Input } from "./home/input";
 import { AllTasksDemo } from "./home/allTasksDemo";
 import { useRouter } from "next/navigation";
@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 export default function Landing() {
   const router = useRouter();
   const handleGetStarted = () => {
-    router.push('/login')
-  }
+    router.push("/login");
+  };
 
   return (
     <div className="bg-light dark:bg-dark w-screen h-100 pt-[6rem] pl-32 pr-32">
@@ -25,10 +25,15 @@ export default function Landing() {
             <h3>Keeping track of complex topics, made easy.</h3>
           </div>
           <div>
-            <button className="btn rounded-3xl bg-gradient-to-r from-purple-400 to-pink-600 text-white border-0 hover:scale-110 ease-out duration-200 " onClick={handleGetStarted}>Get Started</button>
+            <button
+              className="btn rounded-3xl bg-gradient-to-r from-purple-400 to-pink-600 text-white border-0 hover:scale-110 ease-out duration-200 "
+              onClick={handleGetStarted}
+            >
+              Get Started
+            </button>
           </div>
         </div>
-        <div className="bg-zinc-50 dark:bg-zinc-800 dark:shadow-gray-900 w-2/3 h-full rounded-2xl flex flex-col items-center shadow-2xl hover:scale-105 transition ease-in-out duration-300">
+        <div className="bg-inherit dark:shadow-gray-900 w-2/3 h-full rounded-2xl flex flex-col items-center shadow-xl hover:scale-105 transition ease-in-out duration-300">
           <Input />
           <AllTasksDemo />
         </div>

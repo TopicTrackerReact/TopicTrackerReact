@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
@@ -31,7 +31,10 @@ export const SignUp = () => {
 
     const status = emailValidator(email);
     if (!status) {
-      setVisible(true)
+      setVisible(true);
+      setTimeout(() => {
+        setVisible(false);
+      }, 3000);
       return;
     }
 
@@ -53,7 +56,7 @@ export const SignUp = () => {
     }
   };
   return (
-    <div className="flex flex-col bg-slate-100 justify-around p-12 drop-shadow-xl rounded-lg mt-[9rem]">
+    <div className="flex flex-col bg-slate-100 justify-around p-12 drop-shadow-xl rounded-lg mt-[6rem]">
       <h1 className="self-center text-lg">Get Started</h1>
       <label>Email</label>
       <input

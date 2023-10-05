@@ -10,7 +10,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="bg-light dark:bg-dark w-screen h-100 pt-[6rem] pl-32 pr-32">
+    <div className="bg-light dark:bg-dark w-screen h-[100vh] pt-[6rem] pl-32 pr-32">
       <div className="flex items-center w-100 h-[40rem] rounded-2xl shadow-2xl p-8  dark:shadow-gray-900">
         <div className=" text-3xl min-w-xl max-w-xl flex flex-col justify-around h-[23rem] dark:text-white">
           <div className="h-[6.5rem] text-5xl ">

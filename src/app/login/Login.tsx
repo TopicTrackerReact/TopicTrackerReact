@@ -38,32 +38,39 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-around min-h-[70vh]">
-      <div className="flex flex-col bg-slate-100 p-12 drop-shadow-xl m-auto rounded-lg mt-[12rem]">
+    <div className="flex items-center justify-around min-h-[70vh] dark:text-white">
+      <div className="flex flex-col bg-zinc-100 dark:bg-zinc-700 p-12 gap-2 drop-shadow-xl m-auto rounded-lg mt-[12rem]">
         <h1 className="self-center text-lg">Log In</h1>
-        <label>Email</label>
-        <input
-          required={true}
-          type="email"
-          ref={email}
-          className="input h-8 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"
-        />
-        <label>Password</label>
-        <input
-          required={true}
-          ref={password}
-          type="password"
-          className="input h-8 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"
-        />
+        <section className="flex flex-col">
+          <label>Email</label>
+          <input
+            required={true}
+            type="email"
+            ref={email}
+            className="input h-8 bg-zinc-300 dark:bg-zinc-500 hover:bg-zinc-400 dark:hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
+          />
+        </section>
+        <section className="flex flex-col">
+          <label>Password</label>
+          <input
+            required={true}
+            ref={password}
+            type="password"
+            className="input h-8 bg-zinc-300 dark:bg-zinc-500 hover:bg-zinc-400 dark:hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
+          />
+        </section>
         <button
-          className="btn bg-gray-300 hover:bg-gray-400 mt-8"
+          className="btn bg-zinc-300 dark:bg-zinc-500 hover:bg-zinc-400 dark:hover:bg-zinc-400 dark:text-white mt-8 border-none"
           onClick={loggingIn}
         >
           Sign In
         </button>
         <h1 className="my-5 text-center">
           No account?{" "}
-          <Link className="hover:underline text-blue-800" href={"/signup"}>
+          <Link
+            className="hover:underline text-blue-600 dark:text-blue-300"
+            href={"/signup"}
+          >
             Sign Up
           </Link>
         </h1>

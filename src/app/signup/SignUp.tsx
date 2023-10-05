@@ -56,7 +56,7 @@ export const SignUp = () => {
     }
   };
   return (
-    <div className="flex flex-col bg-[#FAFAF9] dark:bg-zinc-800 dark:text-white justify-around p-12 drop-shadow-xl rounded-lg mt-[6rem]">
+    <div className="flex flex-col bg-zinc-100 dark:bg-zinc-700 dark:text-white justify-around p-12 drop-shadow-xl rounded-lg mt-[6rem]">
       <h1 className="self-center text-lg">Get Started</h1>
       <label>Email</label>
       <input
@@ -98,7 +98,10 @@ export const SignUp = () => {
       </button>
       <h1 className="my-5 self-center">
         Already have an account?{" "}
-        <Link className="hover:underline text-blue-600" href={"/login"}>
+        <Link
+          className="hover:underline text-blue-600 dark:text-blue-300"
+          href={"/login"}
+        >
           Log In
         </Link>
       </h1>

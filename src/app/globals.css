@@ -24,3 +24,7 @@ body {
 main {
   height: 100vh;
 }
+
+:root {
+  --toastError: #da0a00;
+}

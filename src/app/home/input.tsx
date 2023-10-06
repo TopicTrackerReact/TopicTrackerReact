@@ -25,9 +25,7 @@ export const Input = () => {
       // console.log(taskNames);
       const tempID = taskNames[task] !== undefined ? taskNames[task] : null;
       if (tempID !== null && taskCache[tempID] !== undefined)
-        toast.error("No duplicate entries allowed", {
-          invert: true,
-        });
+        toast.error("No duplicate entries allowed", {});
       else {
         dispatch(createTask(task));
         setTask("");

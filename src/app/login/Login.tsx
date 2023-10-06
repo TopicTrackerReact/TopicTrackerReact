@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { login } from "@/_redux/features/authSlice";
 import Link from "next/link";
+import { Toaster, toast } from "sonner";
 
 export default function Login() {
   const router = useRouter();
@@ -31,10 +32,12 @@ export default function Login() {
     console.log(msg);
 
     if (msg === "Successful Login!") {
+      toast.success("Logged in!");
       dispatch(login(newEmail));
       router.push("/home");
-    } else if (msg === "Incorrect Password") alert("Wrong Password");
-    else alert("Email does not exist");
+    } else if (msg === "Incorrect Password")
+      toast.error("Wrong password, please try again");
+    else toast.error("Wrong email");
   };
 
   return (
@@ -47,7 +50,7 @@ export default function Login() {
             required={true}
             type="email"
             ref={email}
-            className="input h-8 bg-zinc-300 dark:bg-zinc-500 hover:bg-zinc-400 dark:hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
+            className="input h-8 bg-zinc-300 dark:bg-zinc-500 hover:bg-zinc-400 dark:hover:bg-zinc-400 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:transition duration-200"
           />
         </section>
         <section className="flex flex-col">
@@ -56,7 +59,7 @@ export default function Login() {
             required={true}
             ref={password}
             type="password"
-            className="input h-8 bg-zinc-300 dark:bg-zinc-500 hover:bg-zinc-400 dark:hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
+            className="input h-8 bg-zinc-300 dark:bg-zinc-500 hover:bg-zinc-400 dark:hover:bg-zinc-400 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:transition duration-200"
           />
         </section>
         <button
@@ -75,6 +78,7 @@ export default function Login() {
           </Link>
         </h1>
       </div>
+      <Toaster richColors />
     </div>
   );
 }

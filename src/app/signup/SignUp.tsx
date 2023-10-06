@@ -63,7 +63,7 @@ export const SignUp = () => {
         required={true}
         ref={emailRef}
         type="email"
-        className="input h-8 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"
+        className="input h-8 bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-400 hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
       />
       <div className="flex justify-between my-3">
         <span className="flex flex-col">
@@ -71,7 +71,7 @@ export const SignUp = () => {
           <input
             required={true}
             ref={firstRef}
-            className="input h-8 mr-2 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"
+            className="input h-8 mr-2 bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-400 hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
           />
         </span>
         <span className="flex flex-col">
@@ -79,7 +79,7 @@ export const SignUp = () => {
           <input
             required={true}
             ref={lastRef}
-            className="input h-8 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"
+            className="input h-8 bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-400 hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
           />
         </span>
       </div>
@@ -88,10 +88,10 @@ export const SignUp = () => {
         required={true}
         type="password"
         ref={passRef}
-        className="input h-8 bg-zinc-300 hover:bg-gray-300 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-gray-300 focus:scale-105 focus:transition duration-200"
+        className="input h-8 bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-400 hover:bg-zinc-400 hover:scale-105 hover:transition duration-200 drop-shadow focus:outline-none focus:bg-zinc-300 dark:focus:bg-zinc-500 focus:scale-105 focus:transition duration-200"
       />
       <button
-        className="btn bg-gray-300 hover:bg-gray-400 mt-8"
+        className="btn bg-zinc-400 hover:bg-zinc-500 dark:hover:bg-zinc-300 dark:text-white mt-8 border-none"
         onClick={handleSignUp}
       >
         Sign Up

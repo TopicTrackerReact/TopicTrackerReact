@@ -75,7 +75,7 @@ export const AllTasks = () => {
           data-testid="button-test"
           className={`btn  ${
             taskCache[Number(currentId)].isCompleted
-              ? "bg-green-500 hover:bg-green-600"
+              ? "bg-green-500 hover:bg-green-600 border-0"
               : "dark:bg-zinc-700 dark:text-white border-0 hover:scale-105"
           } `}
           onClick={() => openModal(currentId)}
@@ -113,8 +113,8 @@ export const AllTasks = () => {
   return (
     <div className="flex flex-wrap gap-3">
       {arrOfTasks}
-      <dialog id="my_modal" className="modal absolute">
-        <div className="modal-box flex flex-col">
+      <dialog id="my_modal" className="modal absolute ">
+        <div className="modal-box flex flex-col bg-zinc-200 dark:bg-zinc-700 dark:text-white">
           <form method="dialog" className="flex flex-col gap-3">
             <input
               className="input focus:input-bordered bg-inherit m-auto text-center font-bold focus:outline-none"
@@ -124,7 +124,7 @@ export const AllTasks = () => {
               }
             />
             <textarea
-              className="textarea textarea-bordered focus:outline-none"
+              className="textarea textarea-bordered focus:outline-none dark:bg-zinc-600"
               value={task.notes !== "" ? task.notes : ""}
               onChange={(e) => setTask({ ...task, notes: e.target.value })}
             />

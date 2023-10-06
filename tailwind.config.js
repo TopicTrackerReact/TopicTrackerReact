@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        light: 'linear-gradient(to top right, rgb(216, 180, 254), rgb(250, 250, 250), rgb(250, 250, 250))',
+        dark: 'linear-gradient(to top right, rgb(88, 28, 135), rgb(38, 38, 38), rgb(38, 38, 38))'
       },
       fontFamily: {},
+      
     },
   },
   darkMode: ["class"],

@@ -75,7 +75,7 @@ export const AllTasksDemo = () => {
           data-testid="button-test"
           className={`btn ${
             taskCache[Number(currentId)].isCompleted
-              ? "bg-green-500 hover:bg-green-600"
+              ? "bg-green-500 hover:bg-green-600 border-0 dark:text-white"
               : "dark:bg-zinc-700 dark:text-white border-0 hover:scale-105"
           }`}
           onClick={() => openModal(currentId)}

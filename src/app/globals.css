@@ -22,5 +22,9 @@ body {
 
 } */
 main {
-  flex-grow: 1
+  height: 100vh;
+}
+
+:root {
+  --toastError: #da0a00;
 }

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Input } from "./home/input";
 import { AllTasksDemo } from "./home/allTasksDemo";
 import { useRouter } from "next/navigation";
@@ -6,29 +6,34 @@ import { useRouter } from "next/navigation";
 export default function Landing() {
   const router = useRouter();
   const handleGetStarted = () => {
-    router.push('/login')
-  }
+    router.push("/login");
+  };
 
   return (
-    <div className="bg-zinc-50 dark:bg-zinc-900 w-screen h-100 pt-[6rem] pl-32 pr-32">
-      <div className="flex items-center w-100 h-[40rem] rounded-2xl shadow-2xl p-8 dark:bg-zinc-800 dark:shadow-gray-900">
+    <div className="bg-light dark:bg-dark w-screen h-[100vh] pt-[6rem] pl-32 pr-32">
+      <div className="flex items-center w-100 h-[40rem] rounded-2xl shadow-2xl p-8  dark:shadow-gray-900">
         <div className=" text-3xl min-w-xl max-w-xl flex flex-col justify-around h-[23rem] dark:text-white">
           <div className="h-[6.5rem] text-5xl ">
             <div className="">
               Get started with
-              <div className="font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+              <p className="pb-4 font-bold text-transparent text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
                 Timely
-              </div>
+              </p>
             </div>
           </div>
           <div className=" w-3/4">
             <h3>Keeping track of complex topics, made easy.</h3>
           </div>
           <div>
-            <button className="btn rounded-3xl bg-gradient-to-r from-purple-400 to-pink-600 text-white border-0 hover:scale-110 ease-out duration-200 " onClick={handleGetStarted}>Get Started</button>
+            <button
+              className="btn rounded-3xl bg-gradient-to-r from-purple-400 to-pink-600 text-white border-0 hover:scale-110 ease-out duration-200 "
+              onClick={handleGetStarted}
+            >
+              Get Started
+            </button>
           </div>
         </div>
-        <div className="bg-zinc-50 dark:bg-zinc-800 dark:shadow-gray-900 w-2/3 h-full rounded-2xl flex flex-col items-center shadow-2xl hover:scale-105 transition ease-in-out duration-300">
+        <div className="bg-inherit dark:shadow-gray-900 w-2/3 h-full rounded-2xl flex flex-col items-center shadow-xl hover:scale-105 transition ease-in-out duration-300">
           <Input />
           <AllTasksDemo />
         </div>
